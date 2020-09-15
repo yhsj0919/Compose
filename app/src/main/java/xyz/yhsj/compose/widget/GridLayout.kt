@@ -1,4 +1,4 @@
-package xyz.yhsj.compose.page
+package xyz.yhsj.compose.widget
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Layout

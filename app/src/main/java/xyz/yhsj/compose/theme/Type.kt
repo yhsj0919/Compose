@@ -1,4 +1,4 @@
-package xyz.yhsj.compose.ui
+package xyz.yhsj.compose.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

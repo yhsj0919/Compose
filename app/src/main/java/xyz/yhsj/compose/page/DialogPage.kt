@@ -30,7 +30,7 @@ fun DialogPage() {
 
     Scaffold(topBar = {
         TopAppBar(
-            title = { Text(text = "ListView") },
+            title = { Text(text = "Dialog") },
             elevation = 8.dp,
             navigationIcon = { IconButton(onClick = { Navigation.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
         )
@@ -44,7 +44,6 @@ fun DialogPage() {
             horizontalGravity = Alignment.CenterHorizontally,
             modifier = Modifier.padding(8.dp).fillMaxWidth()
         ) {
-
             Button(onClick = {
                 showDialog.value = true
 
@@ -58,7 +57,6 @@ fun DialogPage() {
 @Composable
 fun showDialog(onDismissRequest: () -> Unit) {
     AlertDialog(
-        backgroundColor = Color.White,
         title = { Text(text = "Title", style = typography.h6) },
         text = {
             Text("item.subtitle", modifier = Modifier.padding(bottom = 8.dp).fillMaxWidth())

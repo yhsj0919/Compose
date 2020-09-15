@@ -32,8 +32,9 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.ui.tooling.preview.Preview
 import xyz.yhsj.compose.utils.Navigation
-
+@Preview
 @Composable
 fun TextPage() {
 

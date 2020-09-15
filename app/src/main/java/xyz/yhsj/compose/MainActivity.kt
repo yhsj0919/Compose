@@ -2,9 +2,13 @@ package xyz.yhsj.compose
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material.Colors
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.setContent
 import xyz.yhsj.compose.page.MainPage
-import xyz.yhsj.compose.ui.ComposeTheme
+import xyz.yhsj.compose.theme.ComposeTheme
 import xyz.yhsj.compose.utils.Navigation
 
 class MainActivity : AppCompatActivity() {

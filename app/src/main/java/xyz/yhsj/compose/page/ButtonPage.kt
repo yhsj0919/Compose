@@ -28,6 +28,7 @@ fun ButtonPage() {
     val checked = mutableStateOf(true)
     val radioChecked = mutableStateOf(0)
 
+
     Scaffold(topBar = {
         TopAppBar(
             title = { Text(text = "Button") },
@@ -99,15 +100,16 @@ fun ButtonPage() {
                     }
                 }
             }
-
+            ExtendedFloatingActionButton(
+                modifier = Modifier.fillMaxWidth(),
+                text = {
+                    Text(text = "电话")
+                },
+                onClick = {},
+                icon = { Icon(asset = Icons.Default.Phone) }
+            )
             Row(verticalGravity = Alignment.CenterVertically) {
-                ExtendedFloatingActionButton(
-                    text = {
-                        Text(text = "电话")
-                    },
-                    onClick = {},
-                    icon = { Icon(asset = Icons.Default.Phone) }
-                )
+
 
                 IconToggleButton(
                     checked = checked.value,

@@ -7,18 +7,15 @@ import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.material.Divider
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import xyz.yhsj.compose.utils.Navigation
-import xyz.yhsj.compose.utils.SharedElement
-import xyz.yhsj.compose.utils.SharedElementType
 
 @Composable
-fun HomeScreen() {
-    val item = arrayListOf("text", "button", "Image", "ListView", "Dialog", "ViewPager")
+fun HomePage() {
+    val item = arrayListOf("text", "button", "Image", "ListView", "Dialog", "ViewPager", "Other")
     LazyColumnFor(items = item) { item ->
         Column {
             TextButton(onClick = {
@@ -29,6 +26,7 @@ fun HomeScreen() {
                     "ListView" -> Navigation.push { ListViewPage() }
                     "Dialog" -> Navigation.push { DialogPage() }
                     "ViewPager" -> Navigation.push { ViewPagerPage() }
+                    "Other" -> Navigation.push { OtherWidgetPage() }
                 }
 
 

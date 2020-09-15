@@ -1,4 +1,4 @@
-package xyz.yhsj.compose.ui
+package xyz.yhsj.compose.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
