@@ -10,10 +10,10 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import xyz.yhsj.compose.rootView
+import xyz.yhsj.compose.defView
 
 object Navigation : LifecycleObserver {
-    private val stack = arrayListOf<@Composable () -> Unit>({ rootView() })
+    private val stack = arrayListOf<@Composable () -> Unit>({ defView() })
     private var current: @Composable () -> Unit by mutableStateOf(stack[0])
 
     @Composable

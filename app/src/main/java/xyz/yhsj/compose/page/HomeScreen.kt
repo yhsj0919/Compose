@@ -18,18 +18,17 @@ import xyz.yhsj.compose.utils.SharedElementType
 
 @Composable
 fun HomeScreen() {
-    val item = arrayListOf("text", "button", "Image", "ListView", "Dialog", "Test")
+    val item = arrayListOf("text", "button", "Image", "ListView", "Dialog", "ViewPager")
     LazyColumnFor(items = item) { item ->
         Column {
             TextButton(onClick = {
-
                 when (item) {
                     "text" -> Navigation.push { TextPage() }
                     "button" -> Navigation.push { ButtonPage() }
                     "Image" -> Navigation.push { ImagePage() }
                     "ListView" -> Navigation.push { ListViewPage() }
                     "Dialog" -> Navigation.push { DialogPage() }
-                    "Test" -> Navigation.push { Text(text = "test") }
+                    "ViewPager" -> Navigation.push { ViewPagerPage() }
                 }
 
 

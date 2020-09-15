@@ -22,12 +22,10 @@ import androidx.compose.ui.graphics.vector.VectorAsset
 fun MainPage() {
     val screenType = mutableStateOf(NavType.Home)
     Scaffold(
-        topBar = { topBar(title = screenType.value.title) }
+        topBar = { topBar(title = screenType.value.title) },
+        bottomBar = { bottomNav(screenType) }
     ) {
-        Column() {
-            homeContent(screenType = screenType.value)
-            bottomNav(screenType)
-        }
+        homeContent(screenType = screenType.value)
     }
 
 }

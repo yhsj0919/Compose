@@ -10,10 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
-//class DefaultPage : Page() {
-//    @Composable
-//    override fun viewContent() {
-
-//    }
-
-//}
+@Composable
+fun defView() {
+    Scaffold {
+        Row(
+            Modifier.fillMaxSize(),
+            horizontalArrangement = Arrangement.Center,
+            verticalGravity = Alignment.CenterVertically
+        ) {
+            Text("Default Page", style = MaterialTheme.typography.h4)
+        }
+    }
+}
