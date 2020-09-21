@@ -6,6 +6,7 @@ import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.RowScope.weight
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -52,12 +53,13 @@ fun homeContent(screenType: NavType) {
 
 @Composable
 fun bottomNav(homeState: MutableState<NavType>) {
-    BottomNavigation {
+    BottomNavigation(
+        ) {
         NavType.values().forEach {
             BottomNavigationItem(
                 icon = { Icon(asset = it.icon) },
                 selected = it == homeState.value,
-                onSelect = { homeState.value = it }
+                onClick = { homeState.value = it }
             )
         }
 

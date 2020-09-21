@@ -37,11 +37,11 @@ fun ButtonPage() {
         )
     }) {
         Column(
-            horizontalGravity = Alignment.CenterHorizontally,
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(8.dp).fillMaxWidth()
         ) {
 
-            Row(verticalGravity = Alignment.CenterVertically) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     text = "Text",
                     modifier = Modifier.clickable(onClick = {}).padding(8.dp)
@@ -69,12 +69,11 @@ fun ButtonPage() {
                 }
             }
 
-            Row(verticalGravity = Alignment.CenterVertically) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 Button(
                     onClick = {},
                     modifier = Modifier.padding(8.dp),
                     enabled = true,
-                    disabledElevation = 4.dp,
                     elevation = 18.dp,
                     shape = RoundedCornerShape(12.dp),
                     border = BorderStroke(1.dp, Color.Red)
@@ -86,7 +85,7 @@ fun ButtonPage() {
                     Text(text = "Outlined")
                 }
                 IconButton(onClick = {}) {
-                    Column(horizontalGravity = Alignment.CenterHorizontally) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Icon(asset = Icons.Default.Phone)
                         Text(modifier = Modifier.padding(start = 8.dp), text = "电话")
                     }
@@ -108,7 +107,7 @@ fun ButtonPage() {
                 onClick = {},
                 icon = { Icon(asset = Icons.Default.Phone) }
             )
-            Row(verticalGravity = Alignment.CenterVertically) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
 
 
                 IconToggleButton(
@@ -138,12 +137,12 @@ fun ButtonPage() {
                 Checkbox(checked = checked.value, onCheckedChange = { checked.value = it })
             }
 
-            Row(verticalGravity = Alignment.CenterVertically) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 Switch(checked = checked.value, onCheckedChange = { checked.value = it })
 
-                Row(verticalGravity = Alignment.CenterVertically) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
                     TextButton(onClick = { radioChecked.value = 0 }) {
-                        Row(verticalGravity = Alignment.CenterVertically) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
                             RadioButton(
                                 selected = radioChecked.value == 0,
                                 onClick = { radioChecked.value = 0 }
@@ -153,7 +152,7 @@ fun ButtonPage() {
                     }
 
                     TextButton(onClick = { radioChecked.value = 1 }) {
-                        Row(verticalGravity = Alignment.CenterVertically) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
                             RadioButton(
                                 selected = radioChecked.value == 1,
                                 onClick = { radioChecked.value = 1 }
@@ -163,7 +162,7 @@ fun ButtonPage() {
                     }
 
                     TextButton(onClick = { radioChecked.value = 2 }) {
-                        Row(verticalGravity = Alignment.CenterVertically) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
                             RadioButton(
                                 selected = radioChecked.value == 2,
                                 onClick = { radioChecked.value = 2 }

@@ -4,6 +4,7 @@ import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.ColumnScope.align
 import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -41,7 +42,7 @@ fun DialogPage() {
         }
 
         ScrollableColumn(
-            horizontalGravity = Alignment.CenterHorizontally,
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(8.dp).fillMaxWidth()
         ) {
             Button(onClick = {
@@ -68,7 +69,7 @@ fun showDialog(onDismissRequest: () -> Unit) {
         buttons = {
             TextButton(
                 onClick = onDismissRequest,
-                modifier = Modifier.padding(8.dp).gravity(Alignment.End)
+                modifier = Modifier.padding(8.dp).align(Alignment.End)
             ) {
                 Text(text = "Ok")
             }

@@ -38,7 +38,7 @@ fun ImagePage() {
         )
     }) {
         ScrollableColumn(
-            horizontalGravity = Alignment.CenterHorizontally,
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(8.dp).fillMaxWidth()
         ) {
             Image(

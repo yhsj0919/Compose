@@ -88,7 +88,7 @@ fun TextPage() {
                             Icon(asset = Icons.Default.Close)
                         } else null
                 },
-                backgroundColor = Color.White,
+//                backgroundColor = Color.White,
                 onTextInputStarted = { },
                 placeholder = { Text(text = "请输入密码") },
                 onValueChange = {

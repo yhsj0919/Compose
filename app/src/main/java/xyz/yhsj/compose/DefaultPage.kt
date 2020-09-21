@@ -16,7 +16,7 @@ fun defView() {
         Row(
             Modifier.fillMaxSize(),
             horizontalArrangement = Arrangement.Center,
-            verticalGravity = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text("Default Page", style = MaterialTheme.typography.h4)
         }

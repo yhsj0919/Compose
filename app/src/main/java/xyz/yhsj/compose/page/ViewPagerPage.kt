@@ -30,7 +30,7 @@ fun ViewPagerPage() {
     }) {
 
         Column(
-            horizontalGravity = Alignment.CenterHorizontally,
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(8.dp).fillMaxWidth()
         ) {
             Button(onClick = {
@@ -50,7 +50,7 @@ fun ViewPagerPage() {
                     Column(
                         modifier = Modifier.fillMaxSize().padding(8.dp).background(Color.Yellow),
                         verticalArrangement = Arrangement.Center,
-                        horizontalGravity = Alignment.CenterHorizontally
+                        horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(text = "$item")
                     }

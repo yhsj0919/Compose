@@ -86,7 +86,7 @@ fun OtherWidgetPage() {
                             }
                         },
                         text = {
-                            Row(verticalGravity = Alignment.CenterVertically) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
                                 Icon(asset = Icons.Default.Info)
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Text(text = data.message)
@@ -108,14 +108,14 @@ fun OtherWidgetPage() {
             }) {
 
             ScrollableColumn(
-                horizontalGravity = Alignment.CenterHorizontally,
+                horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.padding(8.dp).fillMaxWidth(),
             ) {
                 Card(
                     modifier = Modifier.padding(16.dp).fillMaxWidth(),
                     elevation = 4.dp
                 ) {
-                    Row(verticalGravity = Alignment.CenterVertically) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
                         Image(
                             asset = imageResource(id = R.drawable.image_2),
                             contentScale = ContentScale.FillWidth,
@@ -126,7 +126,7 @@ fun OtherWidgetPage() {
                 }
                 Row(
                     modifier = Modifier.padding(8.dp),
-                    verticalGravity = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     LinearProgressIndicator()
                     Spacer(modifier = Modifier.width(8.dp))
@@ -187,7 +187,7 @@ fun OtherWidgetPage() {
                         shape = CutCornerShape(16.dp),
                         clip = true
                     ),
-                    backgroundColor = Color.White,
+                    backgroundColor = MaterialTheme.colors.primary,
                     padding = 16.dp,
 //                border = BorderStroke(1.dp, Color.Red),
                     shape = CutCornerShape(16.dp)
