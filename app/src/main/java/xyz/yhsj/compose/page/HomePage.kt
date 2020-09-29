@@ -11,11 +11,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import xyz.yhsj.compose.page.movie.MoviePage
+import xyz.yhsj.compose.page.simple.*
 import xyz.yhsj.compose.utils.Navigation
 
 @Composable
 fun HomePage() {
-    val item = arrayListOf("text", "button", "Image", "ListView", "Dialog", "ViewPager", "Other")
+    val item =
+        arrayListOf("text", "button", "Image", "ListView", "Dialog", "ViewPager", "Other", "Movie")
     LazyColumnFor(items = item) { item ->
         Column {
             TextButton(onClick = {
@@ -27,6 +30,7 @@ fun HomePage() {
                     "Dialog" -> Navigation.push { DialogPage() }
                     "ViewPager" -> Navigation.push { ViewPagerPage() }
                     "Other" -> Navigation.push { OtherWidgetPage() }
+                    "Movie" -> Navigation.push { MoviePage() }
                 }
 
 

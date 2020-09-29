@@ -1,4 +1,4 @@
-package xyz.yhsj.compose.page
+package xyz.yhsj.compose.page.simple
 
 import android.util.Log
 import androidx.compose.foundation.Icon

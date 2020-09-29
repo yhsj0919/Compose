@@ -1,6 +1,7 @@
 package xyz.yhsj.compose.utils
 
 import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement.Bottom
 import androidx.compose.foundation.layout.RowScope.gravity
@@ -23,8 +24,8 @@ object Navigation : LifecycleObserver {
 
     @Composable
     fun viewContent() {
-        Crossfade(current = current, animation = tween()) {
-            Stack {
+        Crossfade(current = current, animation = spring()) {
+            Surface {
                 current.invoke()
             }
         }

@@ -1,4 +1,4 @@
-package xyz.yhsj.compose.page
+package xyz.yhsj.compose.page.simple
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Icon

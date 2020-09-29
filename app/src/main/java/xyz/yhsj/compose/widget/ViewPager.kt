@@ -74,9 +74,9 @@ fun <T> ViewPager(
             },
             onDrag = { fl ->
                 if (position.value == items.size - 1 && fl < 0) {
-                    0f
+//                    0f
                 } else if (position.value == 0 && fl > 0) {
-                    0f
+//                    0f
                 } else {
                     val old = offset.value
                     offset.snapTo(offset.value + fl)
