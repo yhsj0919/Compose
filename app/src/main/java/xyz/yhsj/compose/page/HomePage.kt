@@ -18,7 +18,17 @@ import xyz.yhsj.compose.utils.Navigation
 @Composable
 fun HomePage() {
     val item =
-        arrayListOf("text", "button", "Image", "ListView", "Dialog", "ViewPager", "Other", "Movie")
+        arrayListOf(
+            "text",
+            "button",
+            "Image",
+            "ListView",
+            "GridView",
+            "Dialog",
+            "ViewPager",
+            "Other",
+            "Movie"
+        )
     LazyColumnFor(items = item) { item ->
         Column {
             TextButton(onClick = {
@@ -27,6 +37,7 @@ fun HomePage() {
                     "button" -> Navigation.push { ButtonPage() }
                     "Image" -> Navigation.push { ImagePage() }
                     "ListView" -> Navigation.push { ListViewPage() }
+                    "GridView" -> Navigation.push { GridViewPage() }
                     "Dialog" -> Navigation.push { DialogPage() }
                     "ViewPager" -> Navigation.push { ViewPagerPage() }
                     "Other" -> Navigation.push { OtherWidgetPage() }

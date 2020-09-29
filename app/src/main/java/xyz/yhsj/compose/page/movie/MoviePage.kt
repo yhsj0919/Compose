@@ -1,5 +1,6 @@
 package xyz.yhsj.compose.page.movie
 
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
@@ -48,34 +49,38 @@ fun MoviePage() {
                 Text(text = "获取列表")
             }
 
-            if (movies.isEmpty() && status) {
 
-                CircularProgressIndicator(
-                    modifier = Modifier.width(60.dp).height(60.dp)
-                        .align(alignment = Alignment.CenterHorizontally)
-                )
+            Crossfade(current = movies.isEmpty() && status) {
+                if (movies.isEmpty() && status) {
 
-            } else {
-                LazyColumnFor(items = movies) { item ->
-                    ListItem(
-                        icon = {
-                            CoilImage(
-                                data = item.cover ?: "",
-                                modifier = Modifier
+                    Surface(modifier = Modifier.fillMaxSize()) {
+                        CircularProgressIndicator(
+                            modifier = Modifier.width(60.dp).height(60.dp)
+                                .align(alignment = Alignment.CenterHorizontally)
+                        )
+
+                    }
+
+                } else {
+                    LazyColumnFor(items = movies) { item ->
+                        ListItem(
+                            icon = {
+                                CoilImage(
+                                    data = item.cover ?: "",
+                                    modifier = Modifier
 //                                .preferredWidth(190.dp)
 //                                .preferredHeight(300.dp)
 //                                .padding(12.dp)
-                                    .clip(RoundedCornerShape(12.dp)),
-                                contentScale = ContentScale.Crop
-                            )
-                        },
-                        text = { Text(text = item.title ?: "", maxLines = 1) },
-                        secondaryText = { Text(text = item.des ?: "", maxLines = 1) }
-                    )
+                                        .clip(RoundedCornerShape(12.dp)),
+                                    contentScale = ContentScale.Crop
+                                )
+                            },
+                            text = { Text(text = item.title ?: "", maxLines = 1) },
+                            secondaryText = { Text(text = item.des ?: "", maxLines = 1) }
+                        )
+                    }
                 }
             }
-
-
         }
     }
 }
