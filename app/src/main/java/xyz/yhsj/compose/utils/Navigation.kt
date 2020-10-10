@@ -2,17 +2,11 @@ package xyz.yhsj.compose.utils
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.spring
-import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.Arrangement.Bottom
-import androidx.compose.foundation.layout.RowScope.gravity
-import androidx.compose.foundation.layout.Stack
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
@@ -24,8 +18,8 @@ object Navigation : LifecycleObserver {
 
     @Composable
     fun viewContent() {
-        Crossfade(current = current, animation = spring()) {
-            Surface {
+        Surface {
+            Crossfade(current = current) {
                 current.invoke()
             }
         }

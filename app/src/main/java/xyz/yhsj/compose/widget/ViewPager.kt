@@ -1,10 +1,9 @@
 package xyz.yhsj.compose.widget
 
-import android.util.Log
 import androidx.compose.animation.animatedFloat
 import androidx.compose.animation.core.ExponentialDecay
-import androidx.compose.foundation.Box
 import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -32,7 +31,7 @@ fun <T> ViewPager(
     current: Int = 0,
     animateTo: Boolean = true,
     modifier: Modifier = Modifier.fillMaxSize(),
-    pageCreater: @Composable (position: Int, item: T) -> Unit
+    pageCreator: @Composable (position: Int, item: T) -> Unit
 ) {
     WithConstraints() {
         val offset = animatedFloat(initVal = 0f)
@@ -47,15 +46,14 @@ fun <T> ViewPager(
             onDragStopped = { velocity ->
                 val target = ExponentialDecay().getTarget(offset.value, velocity)
                 val pageOffset = target + position.value * width
-                var scrollOffset = 0f
+
                 if (abs(pageOffset) > width / 2.5f) {
                     if (pageOffset > 0) {
-                        scrollOffset = -pageOffset
+
                         position.value--
                         mCurrent.value--
 
                     } else {
-                        scrollOffset = width - pageOffset
                         position.value++
                         mCurrent.value++
 
@@ -93,7 +91,7 @@ fun <T> ViewPager(
 //                    Log.e("绘制控件", ">>>$width>>>>>>")
                     items.forEachIndexed { index, t ->
                         Box(Modifier.layoutId(index)) {
-                            pageCreater(index, t)
+                            pageCreator(index, t)
                         }
                     }
                 },
@@ -102,7 +100,7 @@ fun <T> ViewPager(
 //                    Log.e("宽度重新获取", ">>>$width>>>>>>")
 
                     //代码切换一下页面
-                    if (position.value != mCurrent.value && mCurrent.value < items.size ) {
+                    if (position.value != mCurrent.value && mCurrent.value < items.size) {
 //                        Log.e("自动切换", ">>>${position.value}>>${mCurrent.value}>>>>")
                         position.value = mCurrent.value
                         if (animateTo) {

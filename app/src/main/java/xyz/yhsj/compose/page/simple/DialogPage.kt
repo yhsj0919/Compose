@@ -4,9 +4,9 @@ import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.ColumnScope.align
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.MaterialTheme.typography
@@ -64,12 +64,17 @@ fun showDialog(onDismissRequest: () -> Unit) {
             )
         },
         buttons = {
-            TextButton(
-                onClick = onDismissRequest,
-                modifier = Modifier.padding(8.dp).align(Alignment.End)
-            ) {
-                Text(text = "Ok")
+
+            Surface(modifier = Modifier.fillMaxWidth()) {
+                TextButton(
+                    onClick = onDismissRequest,
+                    modifier = Modifier.padding(8.dp).wrapContentWidth(align = Alignment.End)
+                ) {
+                    Text(text = "Ok")
+                }
             }
+
+
         },
         onDismissRequest = onDismissRequest,
         shape = RoundedCornerShape(16.dp)

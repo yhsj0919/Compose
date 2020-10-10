@@ -3,7 +3,8 @@ package xyz.yhsj.compose.page
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.RowScope.weight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.MaterialTheme
@@ -16,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawShadow
 import androidx.compose.ui.graphics.vector.VectorAsset
 import androidx.compose.ui.unit.dp
 import xyz.yhsj.compose.widget.topBar
@@ -35,26 +35,24 @@ fun MainPage() {
 
 @Composable
 fun homeContent(screenType: NavType) {
-    Crossfade(current = screenType, modifier = Modifier.weight(1f)) {
-        Scaffold {
-            when (screenType) {
-                NavType.Home -> HomePage()
-
-                NavType.Notifications -> {
-                    Text(text = screenType.title)
-                }
-                NavType.Mine -> {
-                    Text(text = screenType.title)
-                }
+    Crossfade(current = screenType, modifier = Modifier.fillMaxSize().padding(bottom = 50.dp)) {
+        when (screenType) {
+            NavType.Home -> HomePage()
+            NavType.Notifications -> {
+                Text(text = screenType.title)
+            }
+            NavType.Mine -> {
+                Text(text = screenType.title)
             }
         }
+
     }
 }
 
 @Composable
 fun bottomNav(homeState: MutableState<NavType>) {
     BottomNavigation(
-        ) {
+    ) {
         NavType.values().forEach {
             BottomNavigationItem(
                 icon = { Icon(asset = it.icon) },

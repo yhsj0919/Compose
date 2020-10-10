@@ -27,7 +27,8 @@ fun HomePage() {
             "Dialog",
             "ViewPager",
             "Other",
-            "Movie"
+            "Movie",
+            "测试"
         )
     LazyColumnFor(items = item) { item ->
         Column {
