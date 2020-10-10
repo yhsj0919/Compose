@@ -27,7 +27,7 @@ fun <T> LazyVerticalGrid(
 }
 
 @Composable
-fun <T> GridView(
+private fun <T> GridView(
     columns: Int,
     items: List<T>,
     itemContent: @Composable (item: T) -> Unit
