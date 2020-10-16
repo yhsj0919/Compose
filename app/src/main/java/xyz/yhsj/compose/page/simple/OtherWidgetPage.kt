@@ -50,7 +50,7 @@ fun OtherWidgetPage() {
         drawerState = bottomDrawerState,
         drawerContent = {
             Button(
-                modifier = Modifier.gravity(Alignment.CenterHorizontally).padding(top = 16.dp),
+                modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 16.dp),
                 onClick = { bottomDrawerState.close() },
                 content = { Text("Close Drawer") }
             )
@@ -62,10 +62,10 @@ fun OtherWidgetPage() {
             drawerContent = {
                 Box(
                     modifier = Modifier.fillMaxSize(),
-                    gravity = ContentGravity.Center
+                    alignment = Alignment.Center
                 ) {
                     Button(
-                        modifier = Modifier.gravity(Alignment.CenterHorizontally)
+                        modifier = Modifier.align(Alignment.Center)
                             .padding(top = 16.dp),
                         onClick = { scaffoldState.drawerState.close() },
                         content = { Text("关闭侧边栏") }
@@ -186,12 +186,9 @@ fun OtherWidgetPage() {
                         elevation = 8.dp,
                         shape = CutCornerShape(16.dp),
                         clip = true
-                    ),
-                    backgroundColor = MaterialTheme.colors.primary,
-                    padding = 16.dp,
-//                border = BorderStroke(1.dp, Color.Red),
-                    shape = CutCornerShape(16.dp)
-
+                    ).background(color = MaterialTheme.colors.primary)
+                        .padding(16.dp),
+                    alignment = Alignment.Center
                 ) {
                     Text(text = "随便显示点什么东西")
                 }
@@ -200,7 +197,7 @@ fun OtherWidgetPage() {
                 //https://github.com/androidx/androidx/blob/1915e4a034a9778fdd0819a6a16aea0a5b1adedb/compose/material/material/samples/src/main/java/androidx/compose/material/samples
                 Column {
                     Text("No emphasis applied - 100% opacity")
-                    val emphasisLevels = EmphasisAmbient.current
+                    val emphasisLevels = AmbientEmphasisLevels.current
                     ProvideEmphasis(emphasisLevels.high) {
                         Text("High emphasis applied - 87% opacity")
                     }
@@ -249,13 +246,13 @@ fun OtherWidgetPage() {
                             anchors = anchors,
                             thresholds = { _, _ -> FractionalThreshold(0.5f) },
                             orientation = Orientation.Horizontal
-                        ),
-                    backgroundColor = Color.Black
+                        ).background(color = Color.Black),
+                    alignment = Alignment.Center
                 ) {
                     Box(
-                        Modifier.offsetPx(x = swipeableState.offset).preferredSize(squareSize),
-                        backgroundColor = Color.Red,
-                        gravity = ContentGravity.Center
+                        Modifier.offsetPx(x = swipeableState.offset).preferredSize(squareSize)
+                            .background(color = Color.Red),
+                        alignment = Alignment.Center,
                     ) {
                         Text(text = swipeableState.value, color = Color.White, fontSize = 24.sp)
                     }

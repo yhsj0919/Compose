@@ -4,10 +4,7 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Stack
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.IconButton
@@ -61,12 +58,14 @@ fun GridViewPage() {
 
         }
 
+
+
         Crossfade(current = columns) {
             LazyVerticalGrid(
                 items = items.value,
                 columns = columns
             ) {
-                Stack() {
+                Box() {
                     CoilImage(
                         data = "https://img1.doubanio.com/dae/frodo/img_handler/doulist_cover/3901543/round_rec",
                         modifier = Modifier.wrapContentWidth()
