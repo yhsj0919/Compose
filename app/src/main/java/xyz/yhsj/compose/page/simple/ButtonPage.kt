@@ -74,7 +74,7 @@ fun ButtonPage() {
                     onClick = {},
                     modifier = Modifier.padding(8.dp),
                     enabled = true,
-                    elevation = 18.dp,
+                    elevation = ButtonConstants.defaultElevation(defaultElevation = 18.dp),
                     shape = RoundedCornerShape(12.dp),
                     border = BorderStroke(1.dp, Color.Red)
                 ) {

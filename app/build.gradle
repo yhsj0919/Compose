@@ -6,7 +6,6 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "xyz.yhsj.compose"
@@ -39,7 +38,7 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.4.0'
+        kotlinCompilerVersion '1.4.10'
     }
 
 }
@@ -56,7 +55,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-beta01'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-beta01'
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
@@ -75,5 +74,5 @@ dependencies {
     implementation 'cn.wanghaomiao:JsoupXpath:2.3.2'
     implementation 'com.jayway.jsonpath:json-path:2.4.0'
 
-    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.2.1"
+    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.3.2"
 }

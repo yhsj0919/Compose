@@ -5,6 +5,7 @@ import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.IconButton
@@ -41,31 +42,18 @@ fun GridViewPage() {
 
     Scaffold(topBar = {
         TopAppBar(
-            title = { Text(text = "ListView") },
+            title = { Text(text = "GridView") },
             elevation = 8.dp,
             navigationIcon = { IconButton(onClick = { Navigation.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
         )
     }) {
-
-        Button(onClick = {
-            if (columns == 2) {
-                setColumns(3)
-            } else {
-                setColumns(2)
-            }
-        }) {
-            Text(text = "修改列数")
-
-        }
-
-
 
         Crossfade(current = columns) {
             LazyVerticalGrid(
                 items = items.value,
                 columns = columns
             ) {
-                Box() {
+                Box {
                     CoilImage(
                         data = "https://img1.doubanio.com/dae/frodo/img_handler/doulist_cover/3901543/round_rec",
                         modifier = Modifier.wrapContentWidth()
@@ -84,7 +72,16 @@ fun GridViewPage() {
 
             }
         }
+        Button(onClick = {
+            if (columns == 2) {
+                setColumns(3)
+            } else {
+                setColumns(2)
+            }
+        }) {
+            Text(text = "修改列数")
 
+        }
 
 //        LazyColumnFor(items = items.value) {
 //            Row(modifier = Modifier.fillParentMaxWidth()) {
