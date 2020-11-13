@@ -7,7 +7,7 @@ import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.WithConstraints
+import androidx.compose.ui.layout.WithConstraints
 
 @Composable
 fun <T> LazyVerticalGrid(
@@ -39,7 +39,7 @@ private fun <T> GridView(
                     modifier = Modifier.fillMaxWidth().weight(1f)
                 ) {
                     if (it < items.size) {
-                        itemContent(items.get(it))
+                        itemContent(items[it])
                     }
                 }
             }

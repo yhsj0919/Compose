@@ -3,7 +3,6 @@ package xyz.yhsj.compose.page.simple
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CutCornerShape
@@ -11,10 +10,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawShadow
@@ -200,14 +196,13 @@ fun OtherWidgetPage() {
                 //https://github.com/androidx/androidx/blob/1915e4a034a9778fdd0819a6a16aea0a5b1adedb/compose/material/material/samples/src/main/java/androidx/compose/material/samples
                 Column {
                     Text("No emphasis applied - 100% opacity")
-                    val emphasisLevels = AmbientEmphasisLevels.current
-                    ProvideEmphasis(emphasisLevels.high) {
+                    Providers(AmbientContentAlpha provides ContentAlpha.high) {
                         Text("High emphasis applied - 87% opacity")
                     }
-                    ProvideEmphasis(emphasisLevels.medium) {
+                    Providers(AmbientContentAlpha provides ContentAlpha.medium) {
                         Text("Medium emphasis applied - 60% opacity")
                     }
-                    ProvideEmphasis(emphasisLevels.disabled) {
+                    Providers(AmbientContentAlpha provides ContentAlpha.disabled) {
                         Text("Disabled emphasis applied - 38% opacity")
                     }
                 }

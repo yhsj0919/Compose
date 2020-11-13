@@ -1,14 +1,9 @@
 package xyz.yhsj.compose.page
 
 import androidx.compose.animation.Crossfade
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Notifications
@@ -51,8 +46,7 @@ fun homeContent(screenType: NavType) {
 
 @Composable
 fun bottomNav(homeState: MutableState<NavType>) {
-    BottomNavigation(
-    ) {
+    BottomNavigation {
         NavType.values().forEach {
             BottomNavigationItem(
                 icon = { Icon(asset = it.icon) },

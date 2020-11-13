@@ -6,8 +6,7 @@ import androidx.compose.animation.core.FloatPropKey
 import androidx.compose.animation.core.TransitionState
 import androidx.compose.animation.core.transitionDefinition
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Box
-import androidx.compose.foundation.layout.Stack
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.preferredSize
 import androidx.compose.runtime.*
@@ -17,8 +16,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.boundsInRoot
-import androidx.compose.ui.onGloballyPositioned
-import androidx.compose.ui.onPositioned
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.DensityAmbient
 import kotlin.math.roundToInt
 import kotlin.properties.Delegates
@@ -51,8 +49,7 @@ fun SharedElement(
                 }
             )
         }.then(visibilityModifier),
-        children = children
-    )
+    ) { children.invoke() }
 
     onDispose {
         rootState.onElementDisposed(elementInfo)
@@ -68,7 +65,7 @@ private val SharedElementsRootStateAmbient = staticAmbientOf<SharedElementsRootS
 fun SharedElementsRoot(children: @Composable() () -> Unit) {
     val rootState = remember { SharedElementsRootState() }
 
-    Stack(modifier = Modifier.onGloballyPositioned { layoutCoordinates ->
+    Box(modifier = Modifier.onGloballyPositioned { layoutCoordinates ->
         rootState.rootCoordinates = layoutCoordinates
     }) {
         Providers(SharedElementsRootStateAmbient provides rootState) {
@@ -157,8 +154,9 @@ private fun SharedElementTransitionPlaceholder(
                 scaleY = scaleY,
                 alpha = alpha
             ),
-            children = sharedElement.placeholder
-        )
+        ) {
+            sharedElement.placeholder
+        }
     }
 }
 

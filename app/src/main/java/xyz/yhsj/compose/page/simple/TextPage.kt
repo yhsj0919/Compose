@@ -1,17 +1,12 @@
 package xyz.yhsj.compose.page.simple
 
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.IconButton
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.*
 import androidx.compose.material.MaterialTheme.typography
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.TextField
-import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
@@ -21,16 +16,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.input.*
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import xyz.yhsj.compose.utils.Navigation
+
 @Composable
 fun TextPage() {
 
@@ -47,7 +40,7 @@ fun TextPage() {
         )
     }) {
 
-        Column() {
+        Column {
 
             Text(
                 text = text.value,
@@ -69,10 +62,14 @@ fun TextPage() {
                 //预设字体样式
                 style = typography.caption
             )
+
             TextField(
                 value = text.value,
                 modifier = Modifier.padding(8.dp).fillMaxWidth(),
-                keyboardType = KeyboardType.Text,
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Search
+                ),
                 leadingIcon = { Icon(asset = Icons.Default.Person) },
                 label = { Text(text = "用户名") },
                 trailingIcon = {
@@ -84,7 +81,7 @@ fun TextPage() {
                             Icon(asset = Icons.Default.Close)
                         } else null
                 },
-//                backgroundColor = Color.White,
+                backgroundColor = Color.White,
                 onTextInputStarted = { },
                 placeholder = { Text(text = "请输入密码") },
                 onValueChange = {
@@ -95,7 +92,10 @@ fun TextPage() {
             OutlinedTextField(
                 value = text.value,
                 modifier = Modifier.padding(8.dp).fillMaxWidth(),
-                keyboardType = KeyboardType.Text,
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Search
+                ),
                 label = { Text(text = "Password") },
                 placeholder = { Text(text = "请输入密码") },
                 leadingIcon = { Icon(asset = Icons.Default.Lock) },
@@ -112,7 +112,6 @@ fun TextPage() {
                     '*'
                 ),
                 onValueChange = { text.value = it },
-                imeAction = ImeAction.Search,
                 onImeActionPerformed = { imeAction, softwareKeyboardController -> softwareKeyboardController?.hideSoftwareKeyboard() }
             )
         }

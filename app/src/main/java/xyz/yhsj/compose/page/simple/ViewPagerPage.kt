@@ -1,8 +1,6 @@
 package xyz.yhsj.compose.page.simple
 
 import android.util.Log
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -46,13 +44,13 @@ fun ViewPagerPage() {
                     current = mCurrent.value,
                     modifier = Modifier.fillMaxSize().padding(horizontal = 80.dp),
                     onPageChanged = { Log.e("onPageChanged", "$it") }
-                ) { index, item ->
+                ) { _, item ->
                     Column(
                         modifier = Modifier.fillMaxSize().padding(8.dp).background(Color.Yellow),
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(text = "$item")
+                        Text(text = item)
                     }
 
                 }
