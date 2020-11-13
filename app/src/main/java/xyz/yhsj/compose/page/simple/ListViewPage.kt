@@ -19,7 +19,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import xyz.yhsj.compose.R
-import xyz.yhsj.compose.utils.Navigation
+import xyz.yhsj.compose.routes.Navigator
 
 @Composable
 fun ListViewPage() {
@@ -34,30 +34,9 @@ fun ListViewPage() {
         TopAppBar(
             title = { Text(text = "ListView") },
             elevation = 8.dp,
-            navigationIcon = { IconButton(onClick = { Navigation.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
+            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
         )
     }) {
-//            ScrollableColumn() {
-//                VerticalGrid(columns = 3) {
-//                    items.value.forEach {
-//                        Column(
-//                            horizontalGravity = Alignment.CenterHorizontally,
-//                            modifier = Modifier.padding(8.dp)
-//                        ) {
-//                            Image(
-//                                asset = imageResource(R.drawable.image_1),
-//                                contentScale = ContentScale.Crop,
-//                                modifier = Modifier
-//                                    .preferredWidth(120.dp)
-//                                    .preferredHeight(160.dp)
-//                            )
-//                            Text(text = "item$it")
-//                        }
-//                    }
-//                }
-//            }
-
-
         LazyColumnFor(items = items.value) {
             ListItem(
                 icon = {

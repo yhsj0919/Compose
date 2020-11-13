@@ -21,7 +21,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.seimicrawler.xpath.JXDocument
 import org.seimicrawler.xpath.JXNode
-import xyz.yhsj.compose.utils.Navigation
+import xyz.yhsj.compose.routes.Navigator
 import xyz.yhsj.compose.utils.httpClient
 
 @Composable
@@ -33,7 +33,7 @@ fun MoviePage() {
         TopAppBar(
             title = { Text(text = "Movie") },
             elevation = 8.dp,
-            navigationIcon = { IconButton(onClick = { Navigation.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
+            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
         )
     }) {
         Column {

@@ -19,7 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import xyz.yhsj.compose.utils.Navigation
+import xyz.yhsj.compose.routes.Navigator
 
 @Composable
 fun ButtonPage() {
@@ -31,7 +31,7 @@ fun ButtonPage() {
         TopAppBar(
             title = { Text(text = "Button") },
             elevation = 8.dp,
-            navigationIcon = { IconButton(onClick = { Navigation.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
+            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
         )
     }) {
         Column(

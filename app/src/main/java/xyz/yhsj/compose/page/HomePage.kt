@@ -11,9 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
-import xyz.yhsj.compose.page.movie.MoviePage
-import xyz.yhsj.compose.page.simple.*
-import xyz.yhsj.compose.utils.Navigation
+import xyz.yhsj.compose.routes.Routes
+import xyz.yhsj.compose.routes.Navigator
 
 @Composable
 fun HomePage() {
@@ -30,19 +29,20 @@ fun HomePage() {
             "Movie",
             "测试"
         )
-    LazyColumnFor(items = item) { item ->
+    LazyColumnFor(items = item) { data ->
         Column {
             TextButton(onClick = {
-                when (item) {
-                    "text" -> Navigation.push { TextPage() }
-                    "button" -> Navigation.push { ButtonPage() }
-                    "Image" -> Navigation.push { ImagePage() }
-                    "ListView" -> Navigation.push { ListViewPage() }
-                    "GridView" -> Navigation.push { GridViewPage() }
-                    "Dialog" -> Navigation.push { DialogPage() }
-                    "ViewPager" -> Navigation.push { ViewPagerPage() }
-                    "Other" -> Navigation.push { OtherWidgetPage() }
-                    "Movie" -> Navigation.push { MoviePage() }
+                when (data) {
+                    "text" -> Navigator.push(Routes.TEXT)
+                    "button" -> Navigator.push(Routes.BUTTON)
+                    "Image" -> Navigator.push(Routes.IMAGE)
+                    "ListView" -> Navigator.push(Routes.LISTVIEW)
+                    "GridView" -> Navigator.push(Routes.GRIDVIEW)
+                    "Dialog" -> Navigator.push(Routes.DIALOG)
+                    "ViewPager" -> Navigator.push(Routes.VIEWPAGER)
+                    "Other" -> Navigator.push(Routes.OTHER)
+                    "Movie" -> Navigator.push(Routes.MOVIE)
+                    else -> Navigator.push("测试")
                 }
 
 
@@ -51,7 +51,7 @@ fun HomePage() {
                     fontSize = TextUnit.Sp(24),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillParentMaxWidth().padding(vertical = 16.dp),
-                    text = item
+                    text = data
                 )
             }
         }

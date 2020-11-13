@@ -21,7 +21,7 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import xyz.yhsj.compose.R
-import xyz.yhsj.compose.utils.Navigation
+import xyz.yhsj.compose.routes.Navigator
 
 @Composable
 fun ImagePage() {
@@ -30,7 +30,7 @@ fun ImagePage() {
         TopAppBar(
             title = { Text(text = "Image") },
             elevation = 8.dp,
-            navigationIcon = { IconButton(onClick = { Navigation.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
+            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
         )
     }) {
         ScrollableColumn(

@@ -18,7 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import xyz.yhsj.compose.R
-import xyz.yhsj.compose.utils.Navigation
+import xyz.yhsj.compose.routes.Navigator
 
 @Composable
 fun DialogPage() {
@@ -28,7 +28,7 @@ fun DialogPage() {
         TopAppBar(
             title = { Text(text = "Dialog") },
             elevation = 8.dp,
-            navigationIcon = { IconButton(onClick = { Navigation.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
+            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
         )
     }) {
 

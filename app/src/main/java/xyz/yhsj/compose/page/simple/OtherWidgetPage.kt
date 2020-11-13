@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
 import xyz.yhsj.compose.R
-import xyz.yhsj.compose.utils.Navigation
+import xyz.yhsj.compose.routes.Navigator
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -98,7 +98,7 @@ fun OtherWidgetPage() {
                 TopAppBar(
                     title = { Text(text = "OtherWidget") },
                     elevation = 8.dp,
-                    navigationIcon = { IconButton(onClick = { Navigation.pop() }) { Icon(asset = Icons.Default.ArrowBack) } },
+                    navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } },
                     actions = {
 
 
@@ -214,7 +214,6 @@ fun OtherWidgetPage() {
                     }
 
                 }
-
 
                 DropdownMenu(
                     expanded = expanded.value,

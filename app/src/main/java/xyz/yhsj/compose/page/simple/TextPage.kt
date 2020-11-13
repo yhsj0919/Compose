@@ -22,7 +22,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
-import xyz.yhsj.compose.utils.Navigation
+import xyz.yhsj.compose.routes.Navigator
 
 @Composable
 fun TextPage() {
@@ -36,7 +36,7 @@ fun TextPage() {
         TopAppBar(
             title = { Text(text = "Text") },
             elevation = 8.dp,
-            navigationIcon = { IconButton(onClick = { Navigation.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
+            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
         )
     }) {
 
@@ -79,7 +79,7 @@ fun TextPage() {
                             delete.value = false
                         }) {
                             Icon(asset = Icons.Default.Close)
-                        } else null
+                        }
                 },
                 backgroundColor = Color.White,
                 onTextInputStarted = { },
@@ -112,7 +112,7 @@ fun TextPage() {
                     '*'
                 ),
                 onValueChange = { text.value = it },
-                onImeActionPerformed = { imeAction, softwareKeyboardController -> softwareKeyboardController?.hideSoftwareKeyboard() }
+                onImeActionPerformed = { _, softwareKeyboardController -> softwareKeyboardController?.hideSoftwareKeyboard() }
             )
         }
     }

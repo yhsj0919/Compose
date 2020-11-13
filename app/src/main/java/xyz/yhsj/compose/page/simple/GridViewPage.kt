@@ -23,7 +23,7 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import xyz.yhsj.compose.utils.Navigation
+import xyz.yhsj.compose.routes.Navigator
 import xyz.yhsj.compose.widget.LazyVerticalGrid
 
 @Composable
@@ -41,7 +41,7 @@ fun GridViewPage() {
         TopAppBar(
             title = { Text(text = "GridView") },
             elevation = 8.dp,
-            navigationIcon = { IconButton(onClick = { Navigation.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
+            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
         )
     }) {
 
