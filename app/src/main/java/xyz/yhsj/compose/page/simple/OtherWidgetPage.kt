@@ -13,11 +13,11 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawShadow
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.DensityAmbient
+import androidx.compose.ui.platform.AmbientDensity
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,7 +40,7 @@ fun OtherWidgetPage() {
     val width = 350.dp
     val squareSize = 50.dp
     val swipeableState = rememberSwipeableState("A")
-    val sizePx = with(DensityAmbient.current) { (width - squareSize).toPx() }
+    val sizePx = with(AmbientDensity.current) { (width - squareSize).toPx() }
     val anchors = mapOf(0f to "A", sizePx / 2 to "B", sizePx to "C")
 
     //底部抽屉
@@ -61,7 +61,7 @@ fun OtherWidgetPage() {
             drawerContent = {
                 Box(
                     modifier = Modifier.fillMaxSize(),
-                    alignment = Alignment.Center
+                    contentAlignment = Alignment.Center
                 ) {
                     Button(
                         modifier = Modifier.align(Alignment.Center)
@@ -86,7 +86,7 @@ fun OtherWidgetPage() {
                         },
                         text = {
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                Icon(asset = Icons.Default.Info)
+                                Icon(imageVector = Icons.Default.Info)
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Text(text = data.message)
                             }
@@ -98,7 +98,7 @@ fun OtherWidgetPage() {
                 TopAppBar(
                     title = { Text(text = "OtherWidget") },
                     elevation = 8.dp,
-                    navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } },
+                    navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(imageVector = Icons.Default.ArrowBack) } },
                     actions = {
 
 
@@ -116,7 +116,7 @@ fun OtherWidgetPage() {
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Image(
-                            asset = imageResource(id = R.drawable.image_2),
+                            bitmap = imageResource(id = R.drawable.image_2),
                             contentScale = ContentScale.FillWidth,
                             modifier = Modifier.preferredSize(60.dp)
                         )
@@ -181,13 +181,13 @@ fun OtherWidgetPage() {
                 }
 
                 Box(
-                    modifier = Modifier.drawShadow(
+                    modifier = Modifier.shadow(
                         elevation = 8.dp,
                         shape = CutCornerShape(16.dp),
                         clip = true
                     ).background(color = MaterialTheme.colors.primary)
                         .padding(16.dp),
-                    alignment = Alignment.Center
+                    contentAlignment = Alignment.Center
                 ) {
                     Text(text = "随便显示点什么东西")
                 }
@@ -244,12 +244,13 @@ fun OtherWidgetPage() {
                             thresholds = { _, _ -> FractionalThreshold(0.5f) },
                             orientation = Orientation.Horizontal
                         ).background(color = Color.Black),
-                    alignment = Alignment.Center
+//                    contentAlignment = Alignment.Center
                 ) {
                     Box(
-                        Modifier.offsetPx(x = swipeableState.offset).preferredSize(squareSize)
+                        Modifier.offset(x = {swipeableState.offset.value})
+                            .preferredSize(squareSize)
                             .background(color = Color.Red),
-                        alignment = Alignment.Center,
+                        contentAlignment = Alignment.Center,
                     ) {
                         Text(text = swipeableState.value, color = Color.White, fontSize = 24.sp)
                     }

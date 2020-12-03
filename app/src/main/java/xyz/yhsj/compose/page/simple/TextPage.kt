@@ -36,7 +36,7 @@ fun TextPage() {
         TopAppBar(
             title = { Text(text = "Text") },
             elevation = 8.dp,
-            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
+            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(imageVector = Icons.Default.ArrowBack) } }
         )
     }) {
 
@@ -70,7 +70,7 @@ fun TextPage() {
                     keyboardType = KeyboardType.Text,
                     imeAction = ImeAction.Search
                 ),
-                leadingIcon = { Icon(asset = Icons.Default.Person) },
+                leadingIcon = { Icon(imageVector = Icons.Default.Person) },
                 label = { Text(text = "用户名") },
                 trailingIcon = {
                     if (delete.value)
@@ -78,7 +78,7 @@ fun TextPage() {
                             text.value = ""
                             delete.value = false
                         }) {
-                            Icon(asset = Icons.Default.Close)
+                            Icon(imageVector = Icons.Default.Close)
                         }
                 },
                 backgroundColor = Color.White,
@@ -98,14 +98,14 @@ fun TextPage() {
                 ),
                 label = { Text(text = "Password") },
                 placeholder = { Text(text = "请输入密码") },
-                leadingIcon = { Icon(asset = Icons.Default.Lock) },
+                leadingIcon = { Icon(imageVector = Icons.Default.Lock) },
                 isErrorValue = true,
                 trailingIcon = {
                     IconButton(onClick = {
                         show.value = !show.value
 
                     }) {
-                        Icon(asset = Icons.Default.Star)
+                        Icon(imageVector = Icons.Default.Star)
                     }
                 },
                 visualTransformation = if (show.value) VisualTransformation.None else PasswordVisualTransformation(

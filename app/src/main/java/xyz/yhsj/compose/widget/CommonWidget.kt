@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun topBar(title: String) {
+fun TopBar(title: String) {
     TopAppBar(
         title = {
             Text(text = title)
@@ -19,7 +19,7 @@ fun topBar(title: String) {
         actions = {
             IconButton(
                 onClick = {},
-                icon = { Icon(asset = Icons.Default.Search) }
+                content = { Icon(imageVector = Icons.Default.Search) }
             )
 
         }

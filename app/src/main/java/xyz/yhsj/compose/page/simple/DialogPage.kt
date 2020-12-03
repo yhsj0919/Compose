@@ -28,7 +28,7 @@ fun DialogPage() {
         TopAppBar(
             title = { Text(text = "Dialog") },
             elevation = 8.dp,
-            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
+            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(imageVector = Icons.Default.ArrowBack) } }
         )
     }) {
 
@@ -57,7 +57,7 @@ fun showDialog(onDismissRequest: () -> Unit) {
         text = {
             Text("item.subtitle", modifier = Modifier.padding(bottom = 8.dp).fillMaxWidth())
             Image(
-                asset = imageResource(R.drawable.image_1),
+                bitmap = imageResource(R.drawable.image_1),
                 modifier = Modifier.clip(RoundedCornerShape(16.dp))
             )
         },

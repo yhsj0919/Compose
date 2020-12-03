@@ -31,7 +31,7 @@ fun ButtonPage() {
         TopAppBar(
             title = { Text(text = "Button") },
             elevation = 8.dp,
-            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
+            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(imageVector = Icons.Default.ArrowBack) } }
         )
     }) {
         Column(
@@ -84,14 +84,14 @@ fun ButtonPage() {
                 }
                 IconButton(onClick = {}) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Icon(asset = Icons.Default.Phone)
+                        Icon(imageVector = Icons.Default.Phone)
                         Text(modifier = Modifier.padding(start = 8.dp), text = "电话")
                     }
                 }
 
                 FloatingActionButton(onClick = {}) {
                     Row(Modifier.padding(start = 16.dp, end = 16.dp)) {
-                        Icon(asset = Icons.Default.Phone)
+                        Icon(imageVector = Icons.Default.Phone)
                         Text(modifier = Modifier.padding(start = 8.dp), text = "电话")
 
                     }
@@ -103,7 +103,7 @@ fun ButtonPage() {
                     Text(text = "电话")
                 },
                 onClick = {},
-                icon = { Icon(asset = Icons.Default.Phone) }
+                icon = { Icon(imageVector = Icons.Default.Phone) }
             )
             Row(verticalAlignment = Alignment.CenterVertically) {
 
@@ -115,17 +115,17 @@ fun ButtonPage() {
                     }
                 ) {
                     if (checked.value) {
-                        Icon(asset = Icons.Filled.Favorite)
+                        Icon(imageVector = Icons.Filled.Favorite)
                     } else {
                         Icon(
-                            asset = Icons.Default.FavoriteBorder
+                            imageVector = Icons.Default.FavoriteBorder
                         )
                     }
                 }
                 Button(onClick = {}, modifier = Modifier.padding(8.dp)) {
                     Row {
                         Icon(
-                            asset = Icons.Default.FavoriteBorder,
+                            imageVector = Icons.Default.FavoriteBorder,
                             modifier = Modifier.padding(end = 4.dp)
                         )
                         Text(text = "Button")

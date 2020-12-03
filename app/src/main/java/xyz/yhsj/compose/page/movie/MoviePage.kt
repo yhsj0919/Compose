@@ -33,7 +33,7 @@ fun MoviePage() {
         TopAppBar(
             title = { Text(text = "Movie") },
             elevation = 8.dp,
-            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
+            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(imageVector = Icons.Default.ArrowBack) } }
         )
     }) {
         Column {

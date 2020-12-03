@@ -34,14 +34,14 @@ fun ListViewPage() {
         TopAppBar(
             title = { Text(text = "ListView") },
             elevation = 8.dp,
-            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
+            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(imageVector = Icons.Default.ArrowBack) } }
         )
     }) {
         LazyColumnFor(items = items.value) {
             ListItem(
                 icon = {
                     Image(
-                        asset = imageResource(R.drawable.image_1),
+                        bitmap = imageResource(R.drawable.image_1),
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .preferredWidth(50.dp)

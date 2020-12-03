@@ -11,13 +11,13 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.preferredSize
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.drawLayer
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.DensityAmbient
+import androidx.compose.ui.platform.AmbientDensity
 import kotlin.math.roundToInt
 import kotlin.properties.Delegates
 
@@ -29,15 +29,15 @@ fun SharedElement(
     type: SharedElementType,
     modifier: Modifier = Modifier,
     placeholder: @Composable (() -> Unit)? = null,
-    children: @Composable() () -> Unit
+    children: @Composable () -> Unit
 ) {
     val elementInfo = SharedElementInfo(tag, type)
-    val rootState = SharedElementsRootStateAmbient.current
+    val rootState = AmbientSharedElementsRootState.current
     val (alpha, setAlpha) = remember { mutableStateOf(0f) }
 
     rootState.onElementRegistered(elementInfo)
     val visibilityModifier =
-        if (rootState.shouldHideElement(elementInfo)) Modifier.drawLayer(alpha = alpha) else Modifier
+        if (rootState.shouldHideElement(elementInfo)) Modifier.graphicsLayer(alpha = alpha) else Modifier
     Box(
         modifier = modifier.onGloballyPositioned {
             rootState.onElementPositioned(
@@ -57,19 +57,19 @@ fun SharedElement(
 }
 
 
-private val SharedElementsRootStateAmbient = staticAmbientOf<SharedElementsRootState> {
+private val AmbientSharedElementsRootState = staticAmbientOf<SharedElementsRootState> {
     error("SharedElementsRoot not found. SharedElement must be hosted in SharedElementsRoot.")
 }
 
 @Composable
-fun SharedElementsRoot(children: @Composable() () -> Unit) {
+fun SharedElementsRoot(content: @Composable () -> Unit) {
     val rootState = remember { SharedElementsRootState() }
 
     Box(modifier = Modifier.onGloballyPositioned { layoutCoordinates ->
         rootState.rootCoordinates = layoutCoordinates
     }) {
-        Providers(SharedElementsRootStateAmbient provides rootState) {
-            children()
+        Providers(AmbientSharedElementsRootState provides rootState) {
+            content()
         }
         SharedElementTransitionsOverlay(rootState)
     }
@@ -140,7 +140,7 @@ private fun SharedElementTransitionPlaceholder(
     scaleY: Float = 1f,
     alpha: Float = 1f
 ) {
-    with(DensityAmbient.current) {
+    with(AmbientDensity.current) {
         Box(
             modifier = Modifier.preferredSize(
                 width = sharedElement.bounds.width.toDp(),
@@ -148,7 +148,7 @@ private fun SharedElementTransitionPlaceholder(
             ).offset(
                 x = offsetX.toDp(),
                 y = offsetY.toDp()
-            ).drawLayer(
+            ).graphicsLayer(
 //                elevation = Float.MAX_VALUE, // TODO: re-enable in future? Depending on https://issuetracker.google.com/issues/153173354
                 scaleX = scaleX,
                 scaleY = scaleY,
@@ -177,7 +177,7 @@ private class SharedElementsRootState {
 
     fun onElementPositioned(
         elementInfo: SharedElementInfo,
-        placeholder: @Composable() () -> Unit,
+        placeholder: @Composable () -> Unit,
         coordinates: LayoutCoordinates,
         invalidateElement: () -> Unit
     ) {
@@ -328,7 +328,7 @@ private class SharedElementsTracker(
 
 private class PositionedSharedElement(
     val info: SharedElementInfo,
-    val placeholder: @Composable() () -> Unit,
+    val placeholder: @Composable () -> Unit,
     val bounds: Rect
 )
 
@@ -397,10 +397,10 @@ private sealed class SharedElementTransition(val startElement: PositionedSharedE
         }
 
         class SharedElementPropKeys {
-            val position = OffsetPropKey()
-            val scaleX = FloatPropKey()
-            val scaleY = FloatPropKey()
-            val alpha = FloatPropKey()
+            val position = OffsetPropKey(label = "OffsetPropKey1")
+            val scaleX = FloatPropKey(label = "FloatPropKey1")
+            val scaleY = FloatPropKey(label = "FloatPropKey2")
+            val alpha = FloatPropKey(label = "FloatPropKey3")
         }
     }
 }

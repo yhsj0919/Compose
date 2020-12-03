@@ -16,7 +16,7 @@ fun defView() {
         topBar = {
             TopAppBar(
                 title = { Text(text = "404") },
-                navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
+                navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(imageVector = Icons.Default.ArrowBack) } }
             )
         }
     ) {

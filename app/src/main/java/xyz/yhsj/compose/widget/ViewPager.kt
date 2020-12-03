@@ -13,8 +13,7 @@ import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.WithConstraints
 import androidx.compose.ui.layout.id
 import androidx.compose.ui.layout.layoutId
-import androidx.compose.ui.util.fastForEach
-import androidx.compose.ui.util.fastMaxBy
+
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -30,10 +29,10 @@ fun <T> ViewPager(
     onPageChanged: ((Int) -> Unit)? = null,
     current: Int = 0,
     animateTo: Boolean = true,
-    modifier: Modifier = Modifier.fillMaxSize(),
+    modifier: Modifier,
     pageCreator: @Composable (position: Int, item: T) -> Unit
 ) {
-    WithConstraints() {
+    WithConstraints {
         val offset = animatedFloat(initVal = 0f)
         val position = mutableStateOf(0)
         val mCurrent = mutableStateOf(current)
@@ -86,7 +85,7 @@ fun <T> ViewPager(
 
         Box(draggable) {
             Layout(
-                children = {
+                content = {
 
 //                    Log.e("绘制控件", ">>>$width>>>>>>")
                     items.forEachIndexed { index, t ->
@@ -111,11 +110,11 @@ fun <T> ViewPager(
                         onPageChanged?.invoke(position.value)
                     }
 
-                    val placeables = list.map { it.measure(constraints) to it.id }
-                    val height = placeables.fastMaxBy { it.first.height }?.first?.height ?: 0
+                    val placeAbles = list.map { it.measure(constraints) to it.layoutId }
+                    val height = placeAbles.maxByOrNull { it.first.height }?.first?.height ?: 0
 
                     layout(constraints.maxWidth, height) {
-                        placeables.fastForEach { (placeable, tag) ->
+                        placeAbles.forEach { (placeable, tag) ->
                             if (tag is Int) {
                                 placeable.place(
                                     x = constraints.maxWidth * tag + offset.value.toInt(),

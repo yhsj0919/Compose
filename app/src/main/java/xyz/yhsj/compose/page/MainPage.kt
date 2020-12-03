@@ -12,45 +12,42 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import xyz.yhsj.compose.widget.topBar
+import xyz.yhsj.compose.widget.TopBar
 
 @Composable
 fun MainPage() {
     val screenType = mutableStateOf(NavType.Home)
     Scaffold(
-        topBar = { topBar(title = screenType.value.title) },
-        bottomBar = { bottomNav(screenType) }
+        topBar = { TopBar(title = screenType.value.title) },
+        bottomBar = { BottomNav(screenType) }
     ) {
-        homeContent(screenType = screenType.value)
+        HomeContent(screenType = screenType.value)
     }
 
 }
 
 @Composable
-fun homeContent(screenType: NavType) {
+fun HomeContent(screenType: NavType) {
     Crossfade(current = screenType, modifier = Modifier.fillMaxSize().padding(bottom = 50.dp)) {
         when (screenType) {
             NavType.Home -> HomePage()
             NavType.Notifications -> {
                 Text(text = screenType.title)
             }
-            NavType.Mine -> {
-                Text(text = screenType.title)
-            }
+            NavType.Mine -> MinePage()
         }
 
     }
 }
 
 @Composable
-fun bottomNav(homeState: MutableState<NavType>) {
+fun BottomNav(homeState: MutableState<NavType>) {
     BottomNavigation {
         NavType.values().forEach {
             BottomNavigationItem(
-                icon = { Icon(asset = it.icon) },
+                icon = { Icon(imageVector = it.icon) },
                 selected = it == homeState.value,
                 onClick = { homeState.value = it }
             )
@@ -61,7 +58,7 @@ fun bottomNav(homeState: MutableState<NavType>) {
 }
 
 
-enum class NavType(val title: String, val icon: VectorAsset) {
+enum class NavType(val title: String, val icon: ImageVector) {
     Home("首页", Icons.Default.Home),
     Notifications("消息", Icons.Default.Notifications),
     Mine("我的", Icons.Default.Person),

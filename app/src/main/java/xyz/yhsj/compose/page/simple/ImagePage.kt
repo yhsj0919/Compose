@@ -30,7 +30,7 @@ fun ImagePage() {
         TopAppBar(
             title = { Text(text = "Image") },
             elevation = 8.dp,
-            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(asset = Icons.Default.ArrowBack) } }
+            navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(imageVector = Icons.Default.ArrowBack) } }
         )
     }) {
         ScrollableColumn(
@@ -38,7 +38,7 @@ fun ImagePage() {
             modifier = Modifier.padding(8.dp).fillMaxWidth()
         ) {
             Image(
-                asset = imageResource(R.drawable.image_1),
+                bitmap = imageResource(R.drawable.image_1),
                 contentScale = ContentScale.FillHeight,
                 modifier = Modifier
                     .preferredWidth(100.dp)
@@ -47,30 +47,30 @@ fun ImagePage() {
             )
             Image(
 
-                asset = imageResource(R.drawable.image_1),
+                bitmap = imageResource(R.drawable.image_1),
                 modifier = Modifier.clip(RoundedCornerShape(30.dp)).preferredWidth(150.dp)
 
             )
             Image(
-                asset = imageResource(R.drawable.image_1),
+                bitmap = imageResource(R.drawable.image_1),
                 modifier = Modifier.clip(RoundedCornerShape(50.dp, 0.dp, 50.dp, 0.dp))
                     .preferredWidth(150.dp)
 
             )
             Image(
-                asset = imageResource(R.drawable.image_1),
+                bitmap = imageResource(R.drawable.image_1),
                 modifier = Modifier.clip(CutCornerShape(20.dp)).preferredWidth(150.dp)
 
             )
             Image(
-                asset = imageResource(R.drawable.image_1),
+                bitmap = imageResource(R.drawable.image_1),
                 modifier = Modifier
                     .clip(RoundedCornerShape(50.dp))
                     .preferredWidth(150.dp)
             )
 
             Image(
-                asset = vectorResource(id = R.drawable.ic_launcher_background),
+                imageVector = vectorResource(id = R.drawable.ic_launcher_background),
             )
 
         }
