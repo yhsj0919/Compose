@@ -61,7 +61,7 @@ val httpClient = HttpClient(Android) {
     //超时
     install(HttpTimeout) {
         // timeout config
-        requestTimeoutMillis = 1000
+        requestTimeoutMillis = 10000
     }
 
     //响应验证
