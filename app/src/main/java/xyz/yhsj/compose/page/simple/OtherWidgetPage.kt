@@ -247,7 +247,7 @@ fun OtherWidgetPage() {
 //                    contentAlignment = Alignment.Center
                 ) {
                     Box(
-                        Modifier.offset(x = {swipeableState.offset.value})
+                        Modifier.offset(x = swipeableState.offset.value.dp)
                             .preferredSize(squareSize)
                             .background(color = Color.Red),
                         contentAlignment = Alignment.Center,

@@ -2,6 +2,7 @@ package xyz.yhsj.compose.widget
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.material.Surface
@@ -19,10 +20,12 @@ fun <T> LazyVerticalGrid(
     val rows: List<List<T>> = items.withIndex()
         .groupBy { it.index / tmpColumns }
         .map { group -> group.value.map { indexedValue -> indexedValue.value } }
-    LazyColumnFor(items = rows) { item ->
-        GridView(columns = tmpColumns, items = item) {
-            itemContent(it)
-        }
+    LazyColumn {
+        items(items = rows, itemContent = { item ->
+            GridView(columns = tmpColumns, items = item) {
+                itemContent(it)
+            }
+        })
     }
 }
 

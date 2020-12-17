@@ -2,7 +2,7 @@ package xyz.yhsj.compose.page.movie
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -60,22 +60,24 @@ fun MoviePage() {
                     }
 
                 } else {
-                    LazyColumnFor(items = movies) { item ->
-                        ListItem(
-                            icon = {
-                                CoilImage(
-                                    data = item.cover ?: "",
-                                    modifier = Modifier
+                    LazyColumn {
+                        items(items = movies, itemContent = { item ->
+                            ListItem(
+                                icon = {
+                                    CoilImage(
+                                        data = item.cover ?: "",
+                                        modifier = Modifier
 //                                .preferredWidth(190.dp)
 //                                .preferredHeight(300.dp)
 //                                .padding(12.dp)
-                                        .clip(RoundedCornerShape(12.dp)),
-                                    contentScale = ContentScale.Crop
-                                )
-                            },
-                            text = { Text(text = item.title ?: "", maxLines = 1) },
-                            secondaryText = { Text(text = item.des ?: "", maxLines = 1) }
-                        )
+                                            .clip(RoundedCornerShape(12.dp)),
+                                        contentScale = ContentScale.Crop
+                                    )
+                                },
+                                text = { Text(text = item.title ?: "", maxLines = 1) },
+                                secondaryText = { Text(text = item.des ?: "", maxLines = 1) }
+                            )
+                        })
                     }
                 }
             }

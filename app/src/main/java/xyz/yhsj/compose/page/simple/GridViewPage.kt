@@ -1,11 +1,15 @@
 package xyz.yhsj.compose.page.simple
 
 import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.lazy.GridCells
+import androidx.compose.foundation.lazy.LazyGridScope
+import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -24,8 +28,10 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import xyz.yhsj.compose.routes.Navigator
-import xyz.yhsj.compose.widget.LazyVerticalGrid
 
+//import xyz.yhsj.compose.widget.LazyVerticalGrid
+
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun GridViewPage() {
     val items = mutableStateOf(listOf<Int>())
@@ -44,30 +50,29 @@ fun GridViewPage() {
             navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(imageVector = Icons.Default.ArrowBack) } }
         )
     }) {
-
         Crossfade(current = columns) {
-            LazyVerticalGrid(
-                items = items.value,
-                columns = columns
-            ) {
-                Box {
-                    CoilImage(
-                        data = "https://img1.doubanio.com/dae/frodo/img_handler/doulist_cover/3901543/round_rec",
-                        modifier = Modifier.wrapContentWidth()
-                            .height(120.dp).align(Alignment.Center)
-                            .padding(vertical = 8.dp)
-                            .clip(RoundedCornerShape(12.dp)),
-                        contentScale = ContentScale.Fit
-                    )
+            //官方实现方式，这里一共两种列数方式，一种固定列宽，自适应列数，一种固定列数
+            LazyVerticalGrid(cells = GridCells.Fixed(columns)) {
+                items(items = items.value, itemContent = {
+                    Box {
+                        CoilImage(
+                            data = "https://img1.doubanio.com/dae/frodo/img_handler/doulist_cover/3901543/round_rec",
+                            modifier = Modifier.wrapContentWidth()
+                                .height(120.dp).align(Alignment.Center)
+                                .padding(vertical = 8.dp)
+                                .clip(RoundedCornerShape(12.dp)),
+                            contentScale = ContentScale.Fit
+                        )
 
-                    Text(
-                        text = "item$it",
-                        color = Color.White,
-                        modifier = Modifier.background(Color.Black)
-                    )
-                }
-
+                        Text(
+                            text = "item$it",
+                            color = Color.White,
+                            modifier = Modifier.background(Color.Black)
+                        )
+                    }
+                })
             }
+
         }
         Button(onClick = {
             if (columns == 2) {

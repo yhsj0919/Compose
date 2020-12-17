@@ -33,7 +33,7 @@ fun DialogPage() {
     }) {
 
         if (showDialog.value) {
-            showDialog { showDialog.value = false }
+            ShowDialog { showDialog.value = false }
         }
 
         ScrollableColumn(
@@ -51,7 +51,7 @@ fun DialogPage() {
 }
 
 @Composable
-fun showDialog(onDismissRequest: () -> Unit) {
+fun ShowDialog(onDismissRequest: () -> Unit) {
     AlertDialog(
         title = { Text(text = "Title", style = typography.h6) },
         text = {

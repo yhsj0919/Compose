@@ -9,26 +9,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus
-import androidx.compose.ui.focus.ExperimentalFocus
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.focusObserver
-import androidx.compose.ui.input.key.ExperimentalKeyInput
+
 import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import xyz.yhsj.compose.R
 
-@OptIn(ExperimentalKeyInput::class, ExperimentalFocus::class)
 @Composable
 fun MinePage() {
 
     Column {
 
-
         AndroidTextView("测试文本")
         AndroidTextView("测试文本")
         Button(
-            modifier = Modifier.focus().focusObserver { println(it.name) },
+            modifier = Modifier.focus().onFocusChanged { println(it.name) },
             onClick = { println("按键") }) {
             Text(text = "按钮")
         }
@@ -52,7 +50,8 @@ fun AndroidTextView(title: String) {
         }
     }
 
-    AndroidView({ androidTextView }, modifier = Modifier.padding(8.dp)) {
+    AndroidView({ androidTextView }, modifier = Modifier.padding(8.dp).focus()) {
+
         it.setOnFocusChangeListener { v, hasFocus ->
 
             println(">>>>>>>>>>>>>>>>>>>")

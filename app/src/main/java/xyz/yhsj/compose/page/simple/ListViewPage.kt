@@ -3,6 +3,7 @@ package xyz.yhsj.compose.page.simple
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.layout.preferredWidth
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -37,27 +38,31 @@ fun ListViewPage() {
             navigationIcon = { IconButton(onClick = { Navigator.pop() }) { Icon(imageVector = Icons.Default.ArrowBack) } }
         )
     }) {
-        LazyColumnFor(items = items.value) {
-            ListItem(
-                icon = {
-                    Image(
-                        bitmap = imageResource(R.drawable.image_1),
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .preferredWidth(50.dp)
-                            .preferredHeight(50.dp)
-                            .clip(CircleShape)
-                    )
-                },
-                secondaryText = { Text(text = "secondaryText") },
-                //overlineText = { Text(text = "overlineText") },
-                trailing = { Text(text = "trailing") },
-                singleLineSecondaryText = true,
 
-                ) {
-                Text(text = "Item$it")
-            }
+        LazyColumn {
+            items(items = items.value, itemContent = {
+                ListItem(
+                    icon = {
+                        Image(
+                            bitmap = imageResource(R.drawable.image_1),
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .preferredWidth(50.dp)
+                                .preferredHeight(50.dp)
+                                .clip(CircleShape)
+                        )
+                    },
+                    secondaryText = { Text(text = "secondaryText") },
+                    //overlineText = { Text(text = "overlineText") },
+                    trailing = { Text(text = "trailing") },
+                    singleLineSecondaryText = true,
+
+                    ) {
+                    Text(text = "Item$it")
+                }
+            })
         }
+
 
     }
 
