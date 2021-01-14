@@ -8,10 +8,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus
+import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.focusObserver
-
 import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -26,7 +24,7 @@ fun MinePage() {
         AndroidTextView("测试文本")
         AndroidTextView("测试文本")
         Button(
-            modifier = Modifier.focus().onFocusChanged { println(it.name) },
+            modifier = Modifier.focusModifier().onFocusChanged { println(it.name) },
             onClick = { println("按键") }) {
             Text(text = "按钮")
         }
@@ -50,7 +48,7 @@ fun AndroidTextView(title: String) {
         }
     }
 
-    AndroidView({ androidTextView }, modifier = Modifier.padding(8.dp).focus()) {
+    AndroidView({ androidTextView }, modifier = Modifier.padding(8.dp).focusModifier()) {
 
         it.setOnFocusChangeListener { v, hasFocus ->
 

@@ -9,10 +9,10 @@ import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun navigator(
+fun Navigator(
     navController: NavHostController? = null,
     startDestination: String,
-    routeNotFoundPage: @Composable (NavBackStackEntry) -> Unit = { defView() },
+    routeNotFoundPage: @Composable (NavBackStackEntry) -> Unit = { DefView() },
     pages: List<RoutePage>
 ) {
     val tmpNav = navController ?: rememberNavController()

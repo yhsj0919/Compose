@@ -1,7 +1,7 @@
 package xyz.yhsj.compose.widget
 
 import androidx.compose.animation.animatedFloat
-import androidx.compose.animation.core.ExponentialDecay
+import androidx.compose.animation.core.FloatExponentialDecaySpec
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
@@ -40,7 +40,7 @@ fun <T> ViewPager(
             onDragStarted = {
             },
             onDragStopped = { velocity ->
-                val target = ExponentialDecay().getTarget(offset.value, velocity)
+                val target = FloatExponentialDecaySpec().getTarget(offset.value, velocity)
                 val pageOffset = target + position.value * width
 
                 if (abs(pageOffset) > width / 2.5f) {

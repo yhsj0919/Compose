@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyGridScope
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -29,7 +28,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import xyz.yhsj.compose.routes.Navigator
 
-//import xyz.yhsj.compose.widget.LazyVerticalGrid
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

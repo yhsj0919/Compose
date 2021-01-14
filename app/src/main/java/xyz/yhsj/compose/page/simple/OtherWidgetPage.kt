@@ -1,6 +1,7 @@
 package xyz.yhsj.compose.page.simple
 
 import android.util.Log
+import androidx.annotation.Px
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
@@ -49,7 +50,9 @@ fun OtherWidgetPage() {
         drawerState = bottomDrawerState,
         drawerContent = {
             Button(
-                modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 16.dp),
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(top = 16.dp),
                 onClick = { bottomDrawerState.close() },
                 content = { Text("Close Drawer") }
             )
@@ -64,7 +67,8 @@ fun OtherWidgetPage() {
                     contentAlignment = Alignment.Center
                 ) {
                     Button(
-                        modifier = Modifier.align(Alignment.Center)
+                        modifier = Modifier
+                            .align(Alignment.Center)
                             .padding(top = 16.dp),
                         onClick = { scaffoldState.drawerState.close() },
                         content = { Text("关闭侧边栏") }
@@ -108,10 +112,14 @@ fun OtherWidgetPage() {
 
             ScrollableColumn(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.padding(8.dp).fillMaxWidth(),
+                modifier = Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth(),
             ) {
                 Card(
-                    modifier = Modifier.padding(16.dp).fillMaxWidth(),
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxWidth(),
                     elevation = 4.dp
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -147,7 +155,7 @@ fun OtherWidgetPage() {
                     onValueChange = {
                         sliderValue.value = it
                     })
-
+//
                 Button(onClick = {
                     //这里获取Snackbar的一些操作,SnackBar只能在协程里操作
                     scope.launch {
@@ -181,11 +189,13 @@ fun OtherWidgetPage() {
                 }
 
                 Box(
-                    modifier = Modifier.shadow(
-                        elevation = 8.dp,
-                        shape = CutCornerShape(16.dp),
-                        clip = true
-                    ).background(color = MaterialTheme.colors.primary)
+                    modifier = Modifier
+                        .shadow(
+                            elevation = 8.dp,
+                            shape = CutCornerShape(16.dp),
+                            clip = true
+                        )
+                        .background(color = MaterialTheme.colors.primary)
                         .padding(16.dp),
                     contentAlignment = Alignment.Center
                 ) {
@@ -214,13 +224,15 @@ fun OtherWidgetPage() {
                     }
 
                 }
-
+//
                 DropdownMenu(
                     expanded = expanded.value,
                     onDismissRequest = { expanded.value = false },
                     toggle = iconButton,
                     //这个决定了按钮的位置
-                    toggleModifier = Modifier.fillMaxSize().wrapContentSize(Alignment.TopCenter),
+                    toggleModifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.TopCenter),
 
                     ) {
                     DropdownMenuItem(onClick = { expanded.value = false }) {
@@ -235,26 +247,27 @@ fun OtherWidgetPage() {
                     }
                 }
 
-                Box(
-                    modifier = Modifier
-                        .preferredWidth(width)
-                        .swipeable(
-                            state = swipeableState,
-                            anchors = anchors,
-                            thresholds = { _, _ -> FractionalThreshold(0.5f) },
-                            orientation = Orientation.Horizontal
-                        ).background(color = Color.Black),
-//                    contentAlignment = Alignment.Center
-                ) {
-                    Box(
-                        Modifier.offset(x = swipeableState.offset.value.dp)
-                            .preferredSize(squareSize)
-                            .background(color = Color.Red),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text(text = swipeableState.value, color = Color.White, fontSize = 24.sp)
-                    }
-                }
+//                Box(
+//                    modifier = Modifier
+//                        .preferredWidth(width)
+//                        .swipeable(
+//                            state = swipeableState,
+//                            anchors = anchors,
+//                            thresholds = { _, _ -> FractionalThreshold(0.5f) },
+//                            orientation = Orientation.Horizontal
+//                        )
+//                        .background(color = Color.Black),
+//                ) {
+//                    Box(
+//                        Modifier
+//                            .offset(x = if (!swipeableState.offset.value.isNaN()) swipeableState.offset.value.dp else 0.dp)
+//                            .preferredSize(squareSize)
+//                            .background(color = Color.Red),
+//                        contentAlignment = Alignment.Center,
+//                    ) {
+//                        Text(text = swipeableState.value, color = Color.White, fontSize = 24.sp)
+//                    }
+//                }
 
             }
         }
